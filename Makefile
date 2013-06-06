@@ -3,8 +3,8 @@
 CC = gcc
 
 INC =
-LIBS = -pthread -lm
-CFLAGS = -g $(INC)
+LIBS = -lpthread -lm
+CFLAGS = $(INC)
 
 OBJS = main.o
 SRCS = main.c
