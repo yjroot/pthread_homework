@@ -22,8 +22,8 @@ int main(void) {
         S[i] = 0;
     }
 
-    long starttime = get_time_ms();
     // main computation
+    long starttime = get_time_ms();
     for (i=0; i<N; i++)
         S[i] = log(A[i]) + log(B[i]);
     long endtime = get_time_ms();

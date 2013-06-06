@@ -3,24 +3,29 @@
 CC = gcc
 
 INC =
-LIBS = -lpthread -lm
+LIBS = -lm
 CFLAGS = $(INC)
 
-OBJS = main.o
-SRCS = main.c
+OBJS_SINGLE = single.o
+OBJS_MULTI = multi.o
+OBJS = $(OBJS_SINGLE) $(OBJS_MULTI)
+SRCS = $(OBJS:.o=.c)
 
-TARGET = pthread
+TARGET = single multi
 
-all : $(TARGET)
+all : single multi
 
-$(TARGET) : $(OBJS)
-	$(CC) -o $@ $(OBJS) $(LIBS)
+single : $(OBJS_SINGLE)
+	$(CC) -o $@ $(OBJS_SINGLE) $(LIBS)
+
+multi : $(OBJS_MULTI)
+	$(CC) -o $@ $(OBJS_MULTI) $(LIBS) -lpthread
 
 dep :
 	gccmakedep $(INC) $(SRCS)
 
 clean :
-	rm -rf $(OBJS) $(TARGET) core
+	rm -rf $(OBJS) $(TARGET)
 
 new :
 	$(MAKE) clean
