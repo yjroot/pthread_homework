@@ -30,3 +30,7 @@ clean :
 new :
 	$(MAKE) clean
 	$(MAKE)
+
+test : all
+	./test.sh
+
